@@ -11,12 +11,12 @@ const Menus = [
   },
   {
     id: 'Service',
-    icon: require('../../assets/icons/comment.png'),
+    icon: require('../../assets/icons/service.png'),
     routeName: 'Service',
   },
   {
     id: 'Heart',
-    icon: require('../../assets/icons/heart-outline.png'),
+    icon: require('../../assets/icons/room.png'),
     routeName: 'Heart',
   },
   {

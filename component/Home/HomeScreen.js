@@ -3,6 +3,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import Header from './Header';
 import SearchHome from './SearchHome';
 import ListCard from './ListCard';
+import SodoPhong from './SodoPhong';
 import BottomBar from './BottomBar';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {useNavigation} from '@react-navigation/native';
@@ -15,6 +16,7 @@ const HomeScreen = () => {
         <Header />
         <SearchHome />
         <ListCard onPress={(item) => navigate.navigate('Detail', {item})} />
+        <SodoPhong onPress={() => navigate.navigate('Heart')}  />
       </View>
       <BottomBar />
     </SafeAreaView>

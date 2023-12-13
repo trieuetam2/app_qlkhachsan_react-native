@@ -7,28 +7,35 @@ import DetailScreen from './component/Detail/DetailScreen';
 import ServiceScreen from './component/Services/ServiceScreen';
 import HeartScreen from './component/Hearts/HeartScreen';
 import UserScreen from './component/Users/UserScreen';
+import FavouriteScreen from './component/Users/FavouriteScreen';
 
 import Login from './component/login';
 import Signup from './component/Singup';
+
+import { FavoritesProvider } from './Context/FavoritesContext';
 
 const Stack = createStackNavigator(); // Add this line to create a stack navigator
 
   export default function App() {
     return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Home" component={HomeScreen} />
-      <Stack.Screen name="Detail" component={DetailScreen} />
+      <FavoritesProvider>
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Detail" component={DetailScreen} />
 
-      <Stack.Screen name="Service" component={ServiceScreen} />
-      <Stack.Screen name="Heart" component={HeartScreen} />
-      <Stack.Screen name="User" component={UserScreen} />
+          <Stack.Screen name="Service" component={ServiceScreen} />
+          <Stack.Screen name="Heart" component={HeartScreen} />
+          <Stack.Screen name="User" component={UserScreen} />
+          <Stack.Screen name="FavouriteScreen" component={FavouriteScreen} />
 
-      <Stack.Screen name="Login" component={Login} />
-      <Stack.Screen name="Signup" component={Signup} />
+          <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen name="Signup" component={Signup} />
 
-      </Stack.Navigator>
-      </NavigationContainer>
+          </Stack.Navigator>
+          </NavigationContainer>
+
+      </FavoritesProvider>
     );
   }
 

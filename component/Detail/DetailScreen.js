@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   Text,
@@ -6,17 +6,45 @@ import {
   Image,
   Dimensions,
   Pressable,
+  Modal,
 } from 'react-native';
-import {Mocks} from '../../assets/data';
-import {Colors, Fonts} from '../../assets/themes';
+import { Colors, Fonts } from '../../assets/themes';
 import ListAgent from './ListAgent';
 import ListButton from './ListButton';
-import {useRoute, useNavigation} from '@react-navigation/native';
+import { useRoute, useNavigation } from '@react-navigation/native';
+
+import { useFavorites } from '../../Context/FavoritesContext';
+
 const w = Dimensions.get('screen').width;
+
 const DetailScreen = () => {
+  const { addFavorite, removeFavorite, getFavorites } = useFavorites();
+
   const route = useRoute();
   const item = route.params.item;
   const navigation = useNavigation();
+
+  const [isModalVisible, setModalVisible] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(getFavorites().some(favItem => favItem.id === item.id));
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
+
+  const handleBooking = () => {
+    toggleModal();
+    // Perform booking logic here
+  };
+
+  const handleFavorite = () => {
+    const isFavorite = getFavorites().some((favItem) => favItem.id === item.id);
+    if (isFavorite) {
+      removeFavorite(item.id);
+    } else {
+      addFavorite(item);
+    }
+    setIsFavorite(!isFavorite);
+  };
+
   return (
     <View style={styles.container}>
       <View>
@@ -36,9 +64,13 @@ const DetailScreen = () => {
                 <Text style={styles.textStart}>{item.star}</Text>
               </View>
             </View>
-            <View style={styles.heartButton}>
+            {/* <View style={styles.heartButton}>
               <Image source={require('../../assets/icons/heart.png')} />
-            </View>
+            </View> */}
+             <Pressable style={styles.heartButton} onPress={handleFavorite}>
+              <Image source={isFavorite ? require('../../assets/icons/heart.png') : require('../../assets/icons/heart-outline.png')} />
+            </Pressable>
+
           </View>
           <View style={styles.view1} />
           <View style={styles.view2} />
@@ -54,29 +86,63 @@ const DetailScreen = () => {
           <ListButton
             icon={require('../../assets/icons/badroom.png')}
             num={3}
-            title="Bad rooms"
+            title="Phòng tắm"
           />
           <ListButton
             icon={require('../../assets/icons/bathroom.png')}
             num={2}
-            title="Bath rooms"
+            title="Nhà vệ sinh"
           />
           <ListButton
             icon={require('../../assets/icons/fit.png')}
             num={200}
-            title="Square Fit"
+            title="m/vuông"
           />
         </View>
       </View>
       <View style={styles.bottom}>
         <Text style={styles.price}>
-          ${item.price}
-          <Text style={{fontWeight: 'normal', fontSize: 14}}>/year</Text>
+          {item.price} vnđ
+          <Text style={{ fontWeight: 'normal', fontSize: 14 }}> /năm</Text>
         </Text>
-        <Pressable style={styles.btn}>
-          <Text style={styles.txtBtn}>Book Buy</Text>
+        <Pressable style={styles.btn} onPress={handleBooking}>
+          <Text style={styles.txtBtn}>Đặt phòng</Text>
         </Pressable>
       </View>
+
+      {/* Booking Confirmation Modal */}
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={isModalVisible}
+        onRequestClose={toggleModal}>
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <Text style={{color: 'black', fontWeight: 'bold', fontSize: 20}}>Xác nhận thanh toán</Text>
+            <Text style={{color: 'black', fontWeight: '400', fontSize: 16}}>Kiểu: {item.type}</Text>
+            <Text style={{color: 'black', fontWeight: '400', fontSize: 16}}>Loại: {item.star} sao</Text>
+            <Text style={{color: 'black', fontWeight: '400', fontSize: 16}}>Hạng phòng: {item.name}</Text>
+            <Text style={{color: 'black', fontWeight: '400', fontSize: 16}}>Số phòng: {item.adress}</Text>
+            <Text style={{color: 'red', fontWeight: 'bold', fontSize: 20}}>Giá tiền: {item.price}</Text>
+
+            <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <Pressable
+              style={[styles.btn, { marginTop: 20, marginRight: 10, backgroundColor: 'red' }]}
+              onPress={toggleModal}>
+              
+              <Text style={styles.txtBtnCancel}>Hủy</Text>
+            </Pressable>
+            <Pressable
+              style={[styles.btn, { marginTop: 20,  }]}
+              onPress={toggleModal}>
+              
+              <Text style={styles.txtBtn}>Xác nhận</Text>
+            </Pressable>
+            </View>
+            
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 };
@@ -104,6 +170,11 @@ const styles = StyleSheet.create({
   txtBtn: {
     color: '#FFF',
     fontWeight: 'bold',
+  },
+  txtBtnCancel: {
+    color: 'white',
+    fontWeight: 'bold',
+    backgroundColor: 'red'
   },
   bottom: {
     flexDirection: 'row',
@@ -174,7 +245,7 @@ const styles = StyleSheet.create({
     height: 40,
     borderRadius: 35,
     position: 'absolute',
-    backgroundColor: '#FFF',
+    backgroundColor: Colors.main,
     justifyContent: 'center',
     alignItems: 'center',
     right: 20,
@@ -214,5 +285,18 @@ const styles = StyleSheet.create({
     top: 60,
     left: 20,
     zIndex: 9,
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0,0,0,0.5)',
+  },
+  modalContent: {
+    backgroundColor: '#FFF',
+    padding: 20,
+    borderRadius: 10,
+    width: '80%',
+    alignItems: 'center',
   },
 });

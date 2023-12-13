@@ -1,10 +1,13 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import Header from './Header';
 import BottomBar from './BottomBar';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useNavigation, TouchableOpacity, } from '@react-navigation/native';
+// import { useNavigation } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { Colors } from '../../assets/themes';
+import { Linking } from 'react-native';
+
 const userData = {
   id: 1,
   name: 'John Doe',
@@ -13,11 +16,25 @@ const userData = {
   imgUrl: require('../../assets/hero1.jpg'),
 };
 
-const UserScreen = () => {
-  const navigate = useNavigation();
+const UserScreen = ({navigation}) => {
+  //const navigate = useNavigation();
 
   const handleLogout = () => {
-    navigate.navigate('Login');
+    navigation.navigate('Login');
+  };
+
+  const handleFavorites = () => {
+    navigation.navigate('FavouriteScreen');
+  };
+  const handleRoom= () => {
+    navigation.navigate('Heart');
+  };
+  const handleService = () => {
+    navigation.navigate('Service');
+  };
+  const handleCall = () => {
+    const phoneNumber = '19005000';
+    Linking.openURL(`tel:${phoneNumber}`);
   };
 
   return (
@@ -26,10 +43,10 @@ const UserScreen = () => {
         <Header />
 
         <View style={styles.userInfoContainer}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 50 }}>
+          <View style={{ flexDirection: 'column', alignItems: 'center', marginBottom: 50 }}>
             <Image style={styles.avatar} source={userData.imgUrl} />
             
-            <View>
+            <View style={{ flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
               <Text style={styles.sectionTitle1t}> {userData.name}</Text>
               <Text style={styles.sectionTitlet}>{userData.email}</Text>
               <Text style={styles.sectionTitlet}>{userData.phoneNumber}</Text>
@@ -37,29 +54,37 @@ const UserScreen = () => {
  
           </View>
 
+          <TouchableOpacity onPress={handleRoom}>
           <View style={styles.sectionTitle1}>
-            <Ionicons name="business-outline" size={30} color="#333" style={styles.icon} />
+            <Ionicons name="business-outline" size={30} color="#fff" style={styles.icon} />
             <Text style={[styles.sectionTitleText, { marginLeft: 10 }]}>Xem phòng</Text>
           </View>
+          </TouchableOpacity>
 
-          <View style={styles.sectionTitle}>
-            <Ionicons name="add-circle-outline" size={30} color="#333" style={styles.icon} />
-            <Text style={[styles.sectionTitleText, { marginLeft: 10 }]}>Dịch Vụ</Text>
-          </View>
+          <TouchableOpacity onPress={handleService}>
+            <View style={styles.sectionTitle}>
+              <Ionicons name="add-circle-outline" size={30} color="#fff" style={styles.icon} />
+              <Text style={[styles.sectionTitleText, { marginLeft: 10 }]}>Dịch Vụ</Text>
+            </View>
+          </TouchableOpacity>
 
-          <View style={styles.sectionTitle} >
-            <Ionicons name="call-outline" size={30} color="#333" style={styles.icon} />
-            <Text style={[styles.sectionTitleText, { marginLeft: 10 }]}>Gọi lễ tân</Text>
-          </View>
+          <TouchableOpacity onPress={handleCall}>
+        <View style={styles.sectionTitle}>
+          <Ionicons name="call-outline" size={30} color="#fff" style={styles.icon} />
+          <Text style={[styles.sectionTitleText, { marginLeft: 10 }]}>Gọi lễ tân</Text>
+        </View>
+      </TouchableOpacity>
 
-          <View style={styles.sectionTitle}>
-            <Ionicons name="heart-outline" size={30} color="#333" style={styles.icon} />
+          <TouchableOpacity style={styles.sectionTitle} onPress={handleFavorites}>
+            <Ionicons name="heart-outline" size={30} color="#fff" style={styles.icon} />
             <Text style={[styles.sectionTitleText, { marginLeft: 10 }]}>Mục yêu thích</Text>
-          </View>
+          </TouchableOpacity>
 
-          <View style={[styles.sectionTitle, { textAlign: 'center', color: 'white', backgroundColor: 'red', flexDirection: 'row', alignItems: 'center',}]}>
+          <TouchableOpacity onPress={handleLogout}>
+          <View style={[styles.sectionTitle, { textAlign: 'center', color: 'white', backgroundColor: 'red', flexDirection: 'row', alignItems: 'center'}]}>
             <Text style={[styles.sectionTitleText, { color: 'white', textAlign: 'center' }]}>Đăng xuất</Text>
           </View>
+          </TouchableOpacity>
  
         </View>
       </View>
@@ -84,9 +109,9 @@ const styles = StyleSheet.create({
   avatar: {
     width: 150,
     height: 150,
-    marginLeft: 8,
+
     borderRadius: 100,
-    marginRight: 30
+
   },
   sectionTitle1t: {
     width: '100%',
@@ -109,14 +134,13 @@ const styles = StyleSheet.create({
     width: '100%',
     fontSize: 35,
     fontWeight: '500',
-    color: '#333',
-    marginBottom: 0,
-    backgroundColor: '#fff',
+    color: 'white',
+    backgroundColor: Colors.main,
     padding: 30,
 
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 50
+    marginBottom: 80
   },
   sectionTitle: {
     width: '100%',
@@ -124,9 +148,9 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     color: '#333',
     marginBottom: 0,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.main,
     padding: 30,
-
+    textAlign: 'center',
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 20
@@ -134,5 +158,6 @@ const styles = StyleSheet.create({
   sectionTitleText: {
     flex: 1,
     fontSize: 25, // This allows the text to take up all available space
+    color: 'white'
   },
 });
