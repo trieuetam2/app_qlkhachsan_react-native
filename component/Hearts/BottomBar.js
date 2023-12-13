@@ -16,7 +16,7 @@ const Menus = [
   },
   {
     id: 'Heart',
-    icon: require('../../assets/icons/heart-outline.png'),
+    icon: require('../../assets/icons/heart.png'),
     routeName: 'Heart',
   },
   {

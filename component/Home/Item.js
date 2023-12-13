@@ -47,7 +47,7 @@ export default Item;
 
 const styles = StyleSheet.create({
   name: {
-    fontFamily: Fonts.Bold,
+    // fontFamily: Fonts.Bold,
     fontSize: 20,
     color: Colors.main,
     marginVertical: 10,

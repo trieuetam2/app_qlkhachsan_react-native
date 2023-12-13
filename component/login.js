@@ -121,7 +121,7 @@ const Login = () => {
       
         </View>
 
-        <Pressable onPress={() => navigation.navigate('Home1')}>
+        <Pressable onPress={() => navigation.navigate('Home')}>
          <Text style={{textAlign:
         'center',
         borderColor: COLORS.white,

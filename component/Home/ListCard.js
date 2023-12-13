@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   titleList: {
-    fontFamily: Fonts.Bold,
+    // fontFamily: Fonts.Bold,
     fontSize: 20,
   },
 });

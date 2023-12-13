@@ -11,7 +11,7 @@ const Menus = [
   },
   {
     id: 'Service',
-    icon: require('../../assets/icons/comment-outline.png'),
+    icon: require('../../assets/icons/comment.png'),
     routeName: 'Service',
   },
   {

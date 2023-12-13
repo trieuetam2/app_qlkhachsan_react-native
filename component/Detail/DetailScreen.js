@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
   title: {
     color: Colors.black,
     fontSize: 20,
-    fontFamily: Fonts.Bold,
+    // fontFamily: Fonts.Bold,
   },
 
   view1: {
@@ -195,7 +195,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   name: {
-    fontFamily: Fonts.Bold,
+    // fontFamily: Fonts.Bold,
     fontSize: 25,
     color: Colors.main,
     marginTop: 10,
