@@ -30,6 +30,20 @@ const giaitriData = [
   // Add more items as needed
 ];
 
+const matxaData = [
+  { id: '1', name: 'SPA toàn thân', price: 300000, image: 'https://img.pikbest.com/png-images/body-massage-icon--relax-muscle--spa-center-_1564405.png!sw800' },
+  { id: '2', name: 'Liệu trình 5 bước', price: 250000, image: 'https://htspa.vn/kcfinder/upload//images/Tri%20Mun%20Nam%20Nu/t%E1%BA%A9y%20t%E1%BA%BF%20b%C3%A0o%20ch%E1%BA%BFt.png' },
+  { id: '3', name: 'SPA mặt', price: 55000, image: 'https://oxspa.vn/uploads/images/info/spa-lam-trang-da-mat-o-quan-9.jpg' },
+  // Add more items as needed
+];
+
+const donDepData = [
+  { id: '1', name: 'Dọn dẹp phòng tắm', price: 100000, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS83hecDYkDr_lvkKIRM7NTm9R9OGu8cuu9mozFeDvnm9aags5v1726cqOioQ_RYHBVYdY&usqp=CAU' },
+  { id: '2', name: 'Dọn tổng thể', price: 150000, image: 'https://chuyennhalocphat.vn/wp-content/uploads/2022/09/icon-ve-sinh-van-phong-cong-nghe-hang-dau-1-300x300-1.png' },
+  { id: '3', name: 'Dọn WC', price: 100000, image: 'https://png.pngtree.com/png-vector/20190615/ourlarge/pngtree-bathroomcleaningtoiletwashroom-turquoise-highlight-circle-png-image_1484763.jpg' },
+  // Add more items as needed
+];
+
 const ServiceScreen = () => {
   const navigate = useNavigation();
 
