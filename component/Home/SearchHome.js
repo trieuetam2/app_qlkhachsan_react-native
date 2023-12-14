@@ -10,7 +10,7 @@ const SearchHome = () => {
           style={styles.icon}
           source={require('../../assets/icons/search.png')}
         />
-        <Text style={styles.text}>Search homes</Text>
+        <Text style={styles.text}>Tìm kiếm nhà</Text>
       </View>
       <View style={styles.right}>
         <Image

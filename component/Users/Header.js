@@ -6,8 +6,8 @@ const Header = () => {
   return (
     <View style={styles.container}>
       <View style={styles.left}>
-        <Text style={styles.subTitle}>Find a Thoudsand</Text>
-        <Text style={styles.title}>Homes For Sale & Rent</Text>
+        <Text style={styles.subTitle}>Tìm kiếm hàng ngàn</Text>
+        <Text style={styles.title}>Những ngôi nhà & phòng đẹp</Text>
       </View>
       <View>
         <Image

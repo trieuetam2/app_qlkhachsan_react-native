@@ -25,7 +25,7 @@ const Item = ({item, onPress}) => {
         <View style={styles.priceCon}>
           <Text style={styles.price}>
             ${item.price}
-            <Text style={{fontWeight: 'normal', fontSize: 14}}>/year</Text>
+            <Text style={{fontWeight: 'normal', fontSize: 14}}>/năm</Text>
           </Text>
 
           <View style={styles.startCon}>

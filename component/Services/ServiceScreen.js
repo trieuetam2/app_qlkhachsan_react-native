@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, FlatList, Image } from 'react-native';
+import { StyleSheet, Text, View, FlatList, Image ,TouchableOpacity} from 'react-native';
 import Header from './Header';
 import SearchService from './SearchService';
 import BottomBar from './BottomBar';
@@ -15,10 +15,45 @@ const servicesData = [
   // Add more services as needed
 ];
 
+const anUongData = [
+  { id: '1', name: 'Pho', price: 30000, image: 'https://cdn-icons-png.flaticon.com/512/7499/7499400.png' },
+  { id: '2', name: 'Banh Mi', price: 15000, image: 'https://cdn-icons-png.flaticon.com/512/3296/3296623.png' },
+  { id: '3', name: 'Bun Bo Hue', price: 25000, image: 'https://ih1.redbubble.net/image.1525975323.3981/st,small,507x507-pad,600x600,f8f8f8.jpg' },
+  { id: '4', name: 'Pepsi', price: 10000, image: 'https://icons.iconarchive.com/icons/michael/coke-pepsi/512/Pepsi-Can-icon.png' },
+  // Add more items as needed
+];
+
+const giaitriData = [
+  { id: '1', name: 'PS5', price: 1000000, image: 'https://cdn2.iconfinder.com/data/icons/logos-brands-5/2017/playstation-5-seeklogo.com-5-512.png' },
+  { id: '2', name: 'VR', price: 150000, image: 'https://cdn-icons-png.flaticon.com/512/3646/3646965.png' },
+  { id: '3', name: 'Bi A', price: 25000, image: 'https://png.pngtree.com/element_pic/16/11/15/9013c885a1b04485b51905594ad4cd4b.jpg' },
+  // Add more items as needed
+];
+
 const ServiceScreen = () => {
   const navigate = useNavigation();
 
   const renderServiceItem = ({ item }) => (
+    <TouchableOpacity
+      onPress={() => {
+        switch (item.id) {
+          case '1':
+            navigate.navigate('AnUongScreen', { data: anUongData });
+            break;
+          case '2':
+            navigate.navigate('GiaiTriScreen', { data: giaitriData });
+            break;
+          case '3':
+            navigate.navigate('MatxaScreen', { data: matxaData });
+            break;
+          case '4':
+            navigate.navigate('DonDepScreen', { data: donDepData });
+            break;
+          default:
+            break;
+        }
+      }}
+    >
     <View style={styles.serviceItem}>
       <Image source={item.image} style={styles.serviceImage} />
       <View style={styles.textContainer}>
@@ -26,6 +61,7 @@ const ServiceScreen = () => {
         <Text>{item.name}</Text>
       </View>
     </View>
+    </TouchableOpacity>
   );
 
   return (
@@ -71,8 +107,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#eee',
   },
   serviceImage: {
-    width: 80,
-    height: 80,
+    width: 300,
+    height: 300,
     borderRadius: 40,
     marginBottom: 10,
   },

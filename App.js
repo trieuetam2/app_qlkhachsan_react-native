@@ -8,6 +8,8 @@ import ServiceScreen from './component/Services/ServiceScreen';
 import HeartScreen from './component/Hearts/HeartScreen';
 import UserScreen from './component/Users/UserScreen';
 import FavouriteScreen from './component/Users/FavouriteScreen';
+import AnUongScreen from './component/Services/AnUongScreen';
+import GiaiTriScreen from './component/Services/GiaiTriScreen';
 
 import Login from './component/login';
 import Signup from './component/Singup';
@@ -28,6 +30,8 @@ const Stack = createStackNavigator(); // Add this line to create a stack navigat
           <Stack.Screen name="Heart" component={HeartScreen} />
           <Stack.Screen name="User" component={UserScreen} />
           <Stack.Screen name="FavouriteScreen" component={FavouriteScreen} />
+          <Stack.Screen name="AnUongScreen" component={AnUongScreen} />
+          <Stack.Screen name="GiaiTriScreen" component={GiaiTriScreen} />
 
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="Signup" component={Signup} />

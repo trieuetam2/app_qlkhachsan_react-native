@@ -77,11 +77,11 @@ const DetailScreen = () => {
         </View>
       </View>
       <View style={styles.body}>
-        <Text style={styles.title}>Listing Agent</Text>
+        <Text style={styles.title}>Hạng</Text>
         <ListAgent />
       </View>
       <View style={[styles.body, {marginTop: 0}]}>
-        <Text style={styles.title}>Spectification</Text>
+        <Text style={styles.title}>Các tiện ích sẵn có</Text>
         <View style={styles.specContainer}>
           <ListButton
             icon={require('../../assets/icons/badroom.png')}

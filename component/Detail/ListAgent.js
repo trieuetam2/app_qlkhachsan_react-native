@@ -6,11 +6,11 @@ const ListAgent = () => {
   return (
     <View style={styles.container}>
       <View style={styles.con}>
-        <Text style={styles.textAgent}>Agent</Text>
+        <Text style={styles.textAgent}>Hiện đại</Text>
       </View>
       <View style={styles.middle}>
-        <Text style={styles.title}>PH Housing</Text>
-        <Text>Agent</Text>
+        <Text style={styles.title}>Luxury</Text>
+        <Text>Morden</Text>
       </View>
       <View style={styles.right}>
         <View style={styles.iconBtn}>

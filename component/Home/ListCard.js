@@ -8,8 +8,8 @@ const ListCard = ({onPress}) => {
   return (
     <View>
       <View style={styles.header}>
-        <Text style={styles.titleList}>Recomanded</Text>
-        <Text>View All</Text>
+        <Text style={styles.titleList}>Gợi ý</Text>
+        <Text>xem tất cả</Text>
       </View>
       <FlatList
         contentContainerStyle={{paddingHorizontal: 20}}

@@ -10,7 +10,7 @@ const SearchService = () => {
           style={styles.icon}
           source={require('../../assets/icons/search.png')}
         />
-        <Text style={styles.text}>Search Service</Text>
+        <Text style={styles.text}>tìm kiếm dịch vụ</Text>
       </View>
       <View style={styles.right}>
         <Image
