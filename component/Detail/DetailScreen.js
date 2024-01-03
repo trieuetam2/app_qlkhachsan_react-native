@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF',
   },
   txtBtn: {
-    color: '#FFF',
+    color: 'white',
     fontWeight: 'bold',
   },
   txtBtnCancel: {
